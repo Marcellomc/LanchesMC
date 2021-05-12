@@ -1,4 +1,6 @@
-﻿namespace LanchesMC.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace LanchesMC.Models
 {
     public class Lanche
     {
@@ -6,6 +8,7 @@
         public string Nome { get; set; }
         public string DescricaoCurta { get; set; }
         public string DescricaoDetalhada { get; set; }
+        [Column(TypeName="decimal(18,2)")]
         public decimal Preco { get; set; }
         public string ImagemUrl { get; set; }
         public string ImagemThumbnailUrl { get; set; }
