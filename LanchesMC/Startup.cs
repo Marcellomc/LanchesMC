@@ -26,7 +26,7 @@ namespace LanchesMC
 
             services.AddTransient<ICategoriaRepository, CategoriaRepository>();
             services.AddTransient<ILancheRepository, LancheRepository>();
-
+ 
             services.AddControllersWithViews();
         }
 
