@@ -1,23 +1,15 @@
 ﻿
 @model LancheListViewModel
 
-<div><h2>@Model.CategoriaAtual</h2></div>
+<h2>@Model.CategoriaAtual</h2>
 
- @foreach (var lanche in Model.Lanches)
-  {
-        <div class="col-sm-4 col-1g-4 col-md-4">
-            <div class="thumbnail">
-                <img src="@lanche.ImagemUrl" class="img-rounded" alt=""/>
-            </div>
-            <div class="capition">
-                <h3 class="pull-righ"> @lanche.Preco.ToString("c")</h3>
-                <h3>
-                    @lanche.Nome
-                 </h3>>                 
-                    <p>@lanche.DescricaoCurta</p>               
-            </div>                  
-        </div>
-             
-                                                                                                                                           
+<div class="row">
 
-   }
+    @foreach (var lanche in Model.Lanches)
+    {
+        @* @Html.Partial("_LanchesResumo", lanche); *@
+
+        <partial name="_LanchesResumo" for=" @lanche" />
+
+    }
+</div>
