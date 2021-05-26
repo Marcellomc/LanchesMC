@@ -30,7 +30,7 @@ namespace LanchesMC.Controllers
 
             var lancheslistViewModel = new LancheListViewModel();
             lancheslistViewModel.Lanches = _lancheRepository.Lanches;
-            lancheslistViewModel.CategoriaAtual = "Categoria Atual";
+            lancheslistViewModel.CategoriaAtual ="Categoria Atual";
             return View(lancheslistViewModel);
 
         }
