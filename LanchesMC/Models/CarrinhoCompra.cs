@@ -44,7 +44,7 @@ namespace LanchesMC.Models
 
         }
 
-        public void AdicionarAoCarrinho(Lanche lanche, int quantidade)
+        public void AdicionarAoCarrinho(Lanche lanche)
         {
             //obtem o lanche para o carrinho
             var carrinhoCompraItem =
