@@ -1,4 +1,5 @@
 ﻿using LanchesMC.Models;
+using System;
 
 namespace LanchesMC.ViewModels
 {
@@ -6,5 +7,7 @@ namespace LanchesMC.ViewModels
     {
         public CarrinhoCompra CarrinhoCompra { get; set; }
         public decimal CarrinhoCompraTotal { get; set; }
+
+       
     }
 }
