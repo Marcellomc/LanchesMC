@@ -1,4 +1,5 @@
-﻿using LanchesMC.Repositories;
+﻿using LanchesMC.Models;
+using LanchesMC.Repositories;
 using LanchesMC.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -19,22 +20,49 @@ namespace LanchesMC.Controllers
             _categoriaRepository = categoriaRepository;
         }
 
-        public IActionResult List()
+        public IActionResult List(string categoria)
         {
-            ViewBag.Lanche = "Lanches";
-            ViewData["Categoria"] = "Categoria";
+            string _categoria = categoria;
+            IEnumerable<Lanche> lanches;
 
-            //var lanches = _lancheRepository.Lanches;
-            //return View(lanches);
+            string categoriaAtual = string.Empty;
+
+            if (string.IsNullOrEmpty(categoria))
+            {
+                lanches = _lancheRepository.Lanches.OrderBy(l => l.LancheId);
+                categoria = "Todos os lanches";
+            }
+            else
+            {
+                if (string.Equals("Normal", _categoria, StringComparison.OrdinalIgnoreCase))
+                {
+                    lanches = _lancheRepository.Lanches.Where(l =>
+                    l.Categoria.CategoriaNome.Equals("Normal")).OrderBy(l => l.Nome);
+                }
+                else
+                {
+                    lanches = _lancheRepository.Lanches.Where(l =>
+                    l.Categoria.CategoriaNome.Equals("Natural")).OrderBy(l => l.Nome);
+                }
+
+                categoriaAtual = _categoria;
+            }
+
+            var lanchesListViewModel = new LancheListViewModel
+            {
+                Lanches = lanches,
+                CategoriaAtual = categoriaAtual
+            };
 
 
-            var lancheslistViewModel = new LancheListViewModel();
-            lancheslistViewModel.Lanches = _lancheRepository.Lanches;
-            lancheslistViewModel.CategoriaAtual ="Categoria Atual";
-            return View(lancheslistViewModel);
+            return View(lanchesListViewModel);
 
-        }
+        }   
 
+        
+     }
+           
+     
 
-    }
+    
 }
