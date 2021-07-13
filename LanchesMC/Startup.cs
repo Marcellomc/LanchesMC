@@ -28,6 +28,9 @@ namespace LanchesMC
 
             services.AddTransient<ICategoriaRepository, CategoriaRepository>();
             services.AddTransient<ILancheRepository, LancheRepository>();
+            services.AddTransient<IPedidoRepository, PedidoRepository>();
+
+
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddScoped(cp => CarrinhoCompra.GetCarrinho(cp));
@@ -61,9 +64,9 @@ namespace LanchesMC
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                   name: "AdminArea",
-                   pattern: "{area:exists}/{controler=Admin}/{action=Index}/{id?}");
+               // endpoints.MapControllerRoute(
+                  // name: "AdminArea",
+                  // pattern: "{area:exists}/{controler=Admin}/{action=Index}/{id?}");
 
                 endpoints.MapControllerRoute(name: "categoriaFiltro",
                     pattern: "Lanche/{action}/{categoria?}",
